@@ -1,0 +1,20 @@
+{% extends 'main/base.html' %}
+{% load shop_card %}
+
+{% block content %}
+	<section class="jumbotron text-center">
+		<div class="container">
+			<h1 class="jumbotron-heading">Магазин</h1>
+			<p class="lead text-muted">Здесь можно купить мои работы.</p>
+		</div>
+	</section>
+
+	<div class="album py-5">
+		<div class="container">
+			<div class="row">
+				{% shop_card picture_info %}
+				{% shop_card picture_info %}
+			</div>
+		</div>
+	</div>
+{% endblock %}

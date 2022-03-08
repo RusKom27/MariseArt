@@ -24,3 +24,10 @@ def portfolio(request):
                   'main/portfolio.html',
                   context)
 
+
+def shop(request):
+    context = {'title': 'Shop'}
+
+    return render(request,
+                  'main/shop.html',
+                  context)
