@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from .models import *
 
 
 def index(request):
@@ -18,7 +19,19 @@ def price_list(request):
 
 
 def portfolio(request):
-    context = {'title': 'Portfolio'}
+    pictures = PortfolioPicture.objects.all()
+
+    if request.method == 'GET':
+        if 'search' in request.GET and request.GET['search'] != '':
+            pictures_id = []
+            search_words = request.GET['search'].lower().split()
+            for picture in pictures:
+                for search_word in search_words:
+                    if picture.name.lower().find(search_word) != -1:
+                        pictures_id.append(picture.id)
+            pictures = PortfolioPicture.objects.filter(id__in=pictures_id)
+    context = {'title': 'Портфолио',
+               'pictures': pictures}
 
     return render(request,
                   'main/portfolio.html',
@@ -26,7 +39,20 @@ def portfolio(request):
 
 
 def shop(request):
-    context = {'title': 'Shop'}
+    pictures = ShopPicture.objects.all()
+
+    if request.method == 'GET':
+        if 'search' in request.GET and request.GET['search'] != '':
+            pictures_id = []
+            search_words = request.GET['search'].lower().split()
+            for picture in pictures:
+                for search_word in search_words:
+                    if picture.name.lower().find(search_word) != -1:
+                        pictures_id.append(picture.id)
+            pictures = ShopPicture.objects.filter(id__in=pictures_id)
+
+    context = {'title': 'Магазин',
+               'pictures': pictures}
 
     return render(request,
                   'main/shop.html',

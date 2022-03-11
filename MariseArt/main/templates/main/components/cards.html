@@ -1,0 +1,12 @@
+{% load card %}
+{% block cards %}
+	<div class="row py-5 flex-fill justify-content-around align-content-start">
+		{% if pictures.count > 0 %}
+			{% for picture in pictures %}
+				{% card picture commercial %}
+			{% endfor %}
+		{% else %}
+			<h3 class="text-center">Работ не найдено</h3>
+		{% endif %}
+	</div>
+{% endblock %}

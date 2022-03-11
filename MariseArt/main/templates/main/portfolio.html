@@ -1,5 +1,6 @@
 {% extends 'main/base.html' %}
-{% load portfolio_card %}
+{% load cards %}
+
 
 {% block content %}
 	<section class="jumbotron text-center">
@@ -8,12 +9,10 @@
 			<p class="lead text-muted">Здесь можно просмотреть и оценить мои работы.</p>
 		</div>
 	</section>
-
 	<div class="album py-5">
 		<div class="container">
 			<div class="row">
-				{% portfolio_card picture_info %}
-				{% portfolio_card picture_info %}
+				{% cards pictures False %}
 			</div>
 		</div>
 	</div>

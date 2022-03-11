@@ -1,5 +1,5 @@
 {% extends 'main/base.html' %}
-{% load shop_card %}
+{% load cards %}
 
 {% block content %}
 	<section class="jumbotron text-center">
@@ -12,8 +12,7 @@
 	<div class="album py-5">
 		<div class="container">
 			<div class="row">
-				{% shop_card picture_info %}
-				{% shop_card picture_info %}
+				{% cards pictures True %}
 			</div>
 		</div>
 	</div>

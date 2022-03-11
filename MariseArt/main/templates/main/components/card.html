@@ -1,0 +1,20 @@
+{% block card %}
+	<div class="card col m-auto box-shadow" style="max-width: 27rem">
+		<img class="card-img-top py-1 d-block w-100" src="img/{{ picture.picture.picture }}" data-holder-rendered="true">
+		<div class="card-body">
+			<p class="card-text">{{ picture.picture.name }}</p>
+			<div class="d-flex justify-content-center align-items-center">
+				<div class="btn-group">
+					{% if commercial %}
+						<button type="button" class="btn btn-sm btn-outline-dark">Подробнее</button>
+						<button type="button" class="btn btn-sm btn-lg btn-outline-success">Купить ${{ picture.price }}</button>
+					{% elif not commercial %}
+						<button type="button" class="btn btn-sm btn-outline-secondary">Like {{ picture.likes }}</button>
+						<button type="button" class="btn btn-sm btn-outline-secondary">Dislike {{ picture.dislikes }}</button>
+					{% endif %}
+				</div>
+			</div>
+			<small class="text-muted font-weight-light">{{ picture.date_created|date:"M d, Y" }}</small>
+		</div>
+	</div>
+{% endblock %}
