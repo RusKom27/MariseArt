@@ -1,15 +1,17 @@
 {% load static %}
 {% block heaser %}
-	<header class="masthead mb-auto">
-		<div class="inner">
+	<header class="d-flex flex-row justify-content-between masthead mb-auto">
+		<div class="d-flex flex-column">
 			<h3 class="masthead-brand">MariseArt</h3>
-			<nav class="nav nav-masthead justify-content-center">
-				<a class="nav-link" href="{% url 'home' %}">Home</a>
-				<a class="nav-link" href="{% url 'portfolio' %}">Portfolio</a>
-				<a class="nav-link" href="{% url 'price-list' %}">Price-list</a>
-				<a class="nav-link" href="{% url 'shop' %}">Shop</a>
-				<a class="nav-link" href="admin">Admin-panel</a>
-			</nav>
+			<span class="fs-6 text-muted">Сайт-портфолио</span>
 		</div>
+		<nav class="nav nav-masthead justify-content-center">
+			<a class="nav-link" href="{% url 'home' %}">Home <i class="fa-solid fa-house"></i></a>
+			<a class="nav-link" href="{% url 'portfolio' %}">Portfolio <i class="fa-solid fa-images"></i></a>
+			<a class="nav-link" href="{% url 'price-list' %}">Price-list <i class="fa-solid fa-tags"></i></a>
+			<a class="nav-link" href="{% url 'shop' %}">Shop <i class="fa-solid fa-cart-shopping"></i></a>
+			<a class="nav-link" href="{% url 'contacts' %}">Contacts <i class="fa-solid fa-address-book"></i></a>
+			<a class="nav-link" href="admin">Admin-panel <i class="fa-solid fa-screwdriver-wrench"></i></a>
+		</nav>
 	</header>
 {% endblock %}

@@ -66,16 +66,12 @@ body {
 
 .nav-masthead .nav-link:hover,
 .nav-masthead .nav-link:focus {
-  border-bottom-color: rgba(255, 255, 255, .25);
+  color: rgba(255, 255, 255, 1);
+  border-bottom-color: rgba(255, 255, 255, 0.75);
 }
 
 .nav-masthead .nav-link + .nav-link {
   margin-left: 1rem;
-}
-
-.nav-masthead .active {
-  color: #fff;
-  border-bottom-color: #fff;
 }
 
 @media (min-width: 48em) {
@@ -113,7 +109,7 @@ body {
  */
 
 .card {
-  color: #1a1e21;
+  color: #131a33;
 }
 .border-top { border-top: 1px solid #e5e5e5; }
 .border-bottom { border-bottom: 1px solid #e5e5e5; }
@@ -142,4 +138,60 @@ body {
 
 .jumbotron .container {
   max-width: 40rem;
+}
+
+/*
+ * Filter
+*/
+
+.filter {
+  text-decoration: none;
+  padding: .25rem 0;
+  font-weight: 700;
+  color: rgba(255, 255, 255, .5);
+  background-color: transparent;
+  border-bottom: .25rem solid transparent;
+  transition: 0.25s;
+}
+
+a.filter:hover,
+a.filter:focus {
+  color: rgba(255, 255, 255, 1);
+  border-bottom-color: rgba(255, 255, 255, 0.75);
+}
+
+/*
+ * Search
+ */
+
+.search input {
+  background-color: transparent;
+  width: 100%;
+  border: .25rem solid rgba(255, 255, 255, .5);
+  color: rgba(255, 255, 255, .5);
+  font-weight: 700;
+  border-right: transparent;
+  border-bottom-left-radius: 10px;
+  border-top-left-radius: 10px;
+  transition: 0.25s;
+}
+
+.search button {
+  margin-left: -4px;
+  background-color: transparent;
+  color: rgba(255, 255, 255, .5);
+  font-weight: 700;
+  border: .25rem solid rgba(255, 255, 255, .5);
+  border-left: transparent;
+  border-bottom-right-radius: 10px;
+  border-top-right-radius: 10px;
+  transition: 0.25s;
+}
+
+.search input:hover, .search button:hover,
+.search input:focus, .search button:focus,
+.search input:active, .search button:active {
+  border-color: rgba(255, 255, 255, 1);
+  color: rgba(255, 255, 255, 1);
+  outline: none;
 }

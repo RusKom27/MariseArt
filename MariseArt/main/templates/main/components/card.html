@@ -1,20 +1,25 @@
 {% block card %}
-	<div class="card col m-auto box-shadow" style="max-width: 27rem">
+	<div class="card my-2 mx-2 col m-auto box-shadow" style="min-width: 20rem; max-width: 27rem">
 		<img class="card-img-top py-1 d-block w-100" src="img/{{ picture.picture.picture }}" data-holder-rendered="true">
-		<div class="card-body">
-			<p class="card-text">{{ picture.picture.name }}</p>
-			<div class="d-flex justify-content-center align-items-center">
+		<div class="d-flex flex-column justify-content-end card-body border-1">
+			<p class="card-text m-1">{{ picture.picture.name }}</p>
+			<div class="d-flex justify-content-between align-items-center">
 				<div class="btn-group">
 					{% if commercial %}
-						<button type="button" class="btn btn-sm btn-outline-dark">Подробнее</button>
-						<button type="button" class="btn btn-sm btn-lg btn-outline-success">Купить ${{ picture.price }}</button>
+						<a href="?action=more" class="btn btn-sm border-0 btn-outline-dark">Подробнее</a>
+						<a href="?action=buy" class="btn btn-sm border-0 btn-lg btn-outline-success">Купить ${{ picture.price }}</a>
 					{% elif not commercial %}
-						<button type="button" class="btn btn-sm btn-outline-secondary">Like {{ picture.likes }}</button>
-						<button type="button" class="btn btn-sm btn-outline-secondary">Dislike {{ picture.dislikes }}</button>
+						<a href="?action=like" class="btn btn-sm border-0 btn-outline-secondary"><i class="fa-solid fa-thumbs-up"></i> {{ picture.likes }}</a>
+						<a href="?action=dislike" class="btn btn-sm border-0 btn-outline-danger"><i class="fa-solid fa-thumbs-down"></i> {{ picture.dislikes }}</a>
 					{% endif %}
 				</div>
+				<div class="text-muted align-middle text-end my-2 py-0 px-3">
+					<a class="btn btn-sm border-0 btn-outline-dark" href=""><i class="fa-brands fa-telegram"></i></a>
+					<a class="btn btn-sm border-0 btn-outline-dark" href=""><i class="fa-brands fa-instagram"></i></a>
+					<a class="btn btn-sm border-0 btn-outline-dark" href=""><i class="fa-brands fa-twitter"></i></a>
+				</div>
 			</div>
-			<small class="text-muted font-weight-light">{{ picture.date_created|date:"M d, Y" }}</small>
+			<div class="d-block text-muted text-end fs-6">{{ picture.date_created|date:"M d, Y" }}</div>
 		</div>
 	</div>
 {% endblock %}

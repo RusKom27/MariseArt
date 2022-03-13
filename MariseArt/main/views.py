@@ -18,6 +18,14 @@ def price_list(request):
                   context)
 
 
+def contacts(request):
+    context = {'title': 'Contacts'}
+
+    return render(request,
+                  'main/contacts.html',
+                  context)
+
+
 def portfolio(request):
     pictures = PortfolioPicture.objects.all()
 
