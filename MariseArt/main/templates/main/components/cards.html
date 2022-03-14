@@ -6,7 +6,7 @@
 			<button type="submit">Search</button>
 		</div>
 		<div class="d-flex flex-row">
-			<div class="filter">Filter by</div>
+			<div class="filter">Filter by <i class="fa-solid fa-filter"></i> </div>
 			<a href="?filter=name" class="filter px-2">Name <i class="fa-solid fa-angle-down"></i></a>
 			{% if commercial %}
 				<a href="?filter=price" class="filter px-2">Price <i class="fa-solid fa-angle-down"></i></a>
@@ -26,4 +26,18 @@
 			<h3 class="text-center">Работ не найдено</h3>
 		{% endif %}
 	</div>
+	<script>
+			function showScaledImage(id) {
+				var scaledImageBlock = document.getElementById(id);
+				if (scaledImageBlock.classList.contains("invisible")) {
+						scaledImageBlock.classList.remove("invisible");
+				}
+			}
+			function hideScaledImage(id) {
+				var scaledImageBlock = document.getElementById(id);
+				if (!scaledImageBlock.classList.contains("invisible")) {
+						scaledImageBlock.classList.add("invisible");
+				}
+			}
+		</script>
 {% endblock %}
