@@ -1,0 +1,23 @@
+{% extends 'main/base.html' %}
+
+{% block content %}
+	<section class="jumbotron text-center">
+		<div class="container">
+			<h1 class="jumbotron-heading">Вход</h1>
+			<p class="lead text-muted">Здесь можно войти или зарегистрироваться на сайте, что-бы можно было оценивать мои работы.</p>
+		</div>
+	</section>
+
+	<div class="d-flex justify-content-center">
+		<div class="d-flex justify-content-center w-25 text-center">
+			<div class="d-flex justify-content-center">
+				<form class="auth" method="post">
+					{% csrf_token %}
+					<input class="m-2" placeholder="Email" type="text" name="username">
+					<input class="m-2" placeholder="Password" type="password" name="password1">
+					<button type="submit">Login</button>
+				</form>
+			</div>
+		</div>
+	</div>
+{% endblock %}

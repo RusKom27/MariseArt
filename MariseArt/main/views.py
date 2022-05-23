@@ -1,5 +1,11 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.models import Group
+from django.contrib.auth.decorators import login_required
+
+from .forms import *
 from .models import *
+from .decorators import *
 
 
 def index(request):
@@ -26,6 +32,38 @@ def contacts(request):
                   context)
 
 
+@unauthenticated_user
+def auth(request):
+    if request.method == 'POST':
+        email = request.POST.get('username')
+        password = request.POST.get('password1')
+        if len(User.objects.filter(username=email)) > 0:
+            print('login', email, password)
+            user = authenticate(request, username=email, password=password)
+            print(user)
+            if user is not None:
+                login(request, user)
+                return redirect('home')
+        else:
+            print('register', email, password)
+            form = CustomUserCreationForm(request.POST)
+            user = form.save()
+            login(request, user)
+            return redirect('home')
+    context = {'title': 'Auth'}
+
+    return render(request,
+                  'main/auth.html',
+                  context)
+
+
+@login_required(login_url='auth')
+def unauth(request):
+    logout(request)
+    return redirect('auth')
+
+
+@login_required(login_url='login')
 def portfolio(request):
     pictures = PortfolioPicture.objects.all()
 
@@ -46,6 +84,7 @@ def portfolio(request):
                   context)
 
 
+@login_required(login_url='login')
 def shop(request):
     pictures = ShopPicture.objects.all()
 

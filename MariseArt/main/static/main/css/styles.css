@@ -218,3 +218,32 @@ a.filter:focus {
 .scaled-img div img {
   height: 45rem;
 }
+
+.auth input {
+  background-color: transparent;
+  width: 100%;
+  padding: 5px;
+  border: .25rem solid rgba(255, 255, 255, .5);
+  color: rgba(255, 255, 255, .5);
+  font-weight: 700;
+  border-radius: 10px;
+  transition: 0.25s;
+}
+
+.auth button {
+  background-color: transparent;
+  color: rgba(255, 255, 255, .5);
+  font-weight: 700;
+  padding: 5px;
+  border: .25rem solid rgba(255, 255, 255, .5);
+  border-radius: 10px;
+  transition: 0.25s;
+}
+
+.auth input:hover, .auth button:hover,
+.auth input:focus, .auth button:focus,
+.auth input:active, .auth button:active {
+  border-color: rgba(255, 255, 255, 1);
+  color: rgba(255, 255, 255, 1);
+  outline: none;
+}
