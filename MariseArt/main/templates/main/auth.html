@@ -9,15 +9,75 @@
 	</section>
 
 	<div class="d-flex justify-content-center">
-		<div class="d-flex justify-content-center w-25 text-center">
-			<div class="d-flex justify-content-center">
-				<form class="auth" method="post">
-					{% csrf_token %}
-					<input class="m-2" placeholder="Email" type="text" name="username">
-					<input class="m-2" placeholder="Password" type="password" name="password1">
-					<button type="submit">Login</button>
-				</form>
+		<div class="d-flex mt-2 justify-content-center w-25 text-center">
+			<div class="d-flex mb-2 justify-content-center">
+				<div class="auth w-100 text-end" id="login">
+					<form method="post">
+						{% csrf_token %}
+						<div class="m-2 text-start">
+							<label for="username">Username</label>
+							<input type="text" name="username">
+						</div>
+						<div class="m-2 text-start">
+							<label for="password">Password</label>
+							<input type="password" name="password">
+						</div>
+						<div class="m-2 text-center">
+							<button type="submit" name="login">Login</button>
+						</div>
+					</form>
+					<button class="small border-0" onclick="showRegistration()">Registration</button>
+				</div>
+				<div class="auth w-100 text-end invisible position-fixed" id="register">
+					<form method="post">
+						{% csrf_token %}
+						<div class="m-2 text-start">
+							{{ form.username.label }}
+							{{ form.username }}
+						</div>
+						<div class="m-2 text-start">
+							{{ form.password1.label }}
+							{{ form.password1 }}
+						</div>
+						<div class="m-2 text-start">
+							{{ form.password2.label }}
+							{{ form.password2 }}
+						</div>
+						<div class="m-2 text-center">
+							<button type="submit" name="register">Registration</button>
+						</div>
+					</form>
+					<button class="small border-0" onclick="showLogin()">Login</button>
+				</div>
+
 			</div>
 		</div>
+		<script>
+			function showLogin() {
+				var registrationBlock = document.getElementById("register");
+				var loginBlock = document.getElementById("login");
+				if (loginBlock.classList.contains("invisible")) {
+						loginBlock.classList.remove("invisible");
+						loginBlock.classList.remove("position-fixed");
+				}
+				if (!registrationBlock.classList.contains("invisible")) {
+						registrationBlock.classList.add("invisible");
+						registrationBlock.classList.add("position-fixed");
+
+				}
+			}
+			function showRegistration() {
+				var registrationBlock = document.getElementById("register");
+				var loginBlock = document.getElementById("login");
+				if (!loginBlock.classList.contains("invisible")) {
+						loginBlock.classList.add("invisible");
+						loginBlock.classList.add("position-fixed");
+				}
+				if (registrationBlock.classList.contains("invisible")) {
+						registrationBlock.classList.remove("invisible");
+						registrationBlock.classList.remove("position-fixed");
+				}
+			}
+		</script>
 	</div>
 {% endblock %}

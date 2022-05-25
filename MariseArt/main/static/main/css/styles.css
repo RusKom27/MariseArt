@@ -219,6 +219,11 @@ a.filter:focus {
   height: 45rem;
 }
 
+.auth {
+  color: rgba(255, 255, 255, .5);
+  font-weight: 700;
+}
+
 .auth input {
   background-color: transparent;
   width: 100%;
@@ -227,7 +232,6 @@ a.filter:focus {
   color: rgba(255, 255, 255, .5);
   font-weight: 700;
   border-radius: 10px;
-  transition: 0.25s;
 }
 
 .auth button {
@@ -237,7 +241,6 @@ a.filter:focus {
   padding: 5px;
   border: .25rem solid rgba(255, 255, 255, .5);
   border-radius: 10px;
-  transition: 0.25s;
 }
 
 .auth input:hover, .auth button:hover,

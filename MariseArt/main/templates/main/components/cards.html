@@ -1,10 +1,11 @@
 {% load card %}
 {% block cards %}
 	<div class="d-flex text-nowrap flex-row justify-content-between">
-		<div class="search">
-			<input placeholder="Search" type="text">
+		<form method="get" class="search">
+			{% csrf_token %}
+			<input placeholder="Search" type="text" name="search">
 			<button type="submit">Search</button>
-		</div>
+		</form>
 		<div class="d-flex flex-row">
 			<div class="filter">Filter by <i class="fa-solid fa-filter"></i> </div>
 			<a href="?filter=name" class="filter px-2">Name <i class="fa-solid fa-angle-down"></i></a>
@@ -27,17 +28,17 @@
 		{% endif %}
 	</div>
 	<script>
-			function showScaledImage(id) {
-				var scaledImageBlock = document.getElementById(id);
-				if (scaledImageBlock.classList.contains("invisible")) {
-						scaledImageBlock.classList.remove("invisible");
-				}
+		function showScaledImage(id) {
+			var scaledImageBlock = document.getElementById(id);
+			if (scaledImageBlock.classList.contains("invisible")) {
+					scaledImageBlock.classList.remove("invisible");
 			}
-			function hideScaledImage(id) {
-				var scaledImageBlock = document.getElementById(id);
-				if (!scaledImageBlock.classList.contains("invisible")) {
-						scaledImageBlock.classList.add("invisible");
-				}
+		}
+		function hideScaledImage(id) {
+			var scaledImageBlock = document.getElementById(id);
+			if (!scaledImageBlock.classList.contains("invisible")) {
+					scaledImageBlock.classList.add("invisible");
 			}
-		</script>
+		}
+	</script>
 {% endblock %}

@@ -15,7 +15,7 @@
 				<a class="nav-link" href="{% url 'portfolio' %}">Portfolio <i class="fa-solid fa-images"></i></a>
 				<a class="nav-link" href="{% url 'price-list' %}">Price-list <i class="fa-solid fa-tags"></i></a>
 				<a class="nav-link" href="{% url 'shop' %}">Shop <i class="fa-solid fa-cart-shopping"></i></a>
-				<a class="nav-link" href="{% url 'unauth' %}">Exit <i class="fa-solid fa-arrow-right-from-bracket"></i></a>
+				<a class="nav-link" href="{% url 'unauth' %}">Exit |{{ request.user.username }}| <i class="fa-solid fa-arrow-right-from-bracket"></i></a>
 			{% endif %}
 			{% if not request.user.is_authenticated %}
 				<a class="nav-link" href="{% url 'auth' %}">Login <i class="fa-solid fa-right-to-bracket"></i></a>

@@ -34,23 +34,22 @@ def contacts(request):
 
 @unauthenticated_user
 def auth(request):
+    form = CustomUserCreationForm()
     if request.method == 'POST':
-        email = request.POST.get('username')
-        password = request.POST.get('password1')
-        if len(User.objects.filter(username=email)) > 0:
-            print('login', email, password)
-            user = authenticate(request, username=email, password=password)
-            print(user)
+        if 'login' in request.POST:
+            username = request.POST.get('username')
+            password = request.POST.get('password')
+            user = authenticate(request, username=username, password=password)
             if user is not None:
                 login(request, user)
                 return redirect('home')
-        else:
-            print('register', email, password)
+        elif 'register' in request.POST:
             form = CustomUserCreationForm(request.POST)
             user = form.save()
             login(request, user)
             return redirect('home')
-    context = {'title': 'Auth'}
+    context = {'title': 'Auth',
+               'form': form}
 
     return render(request,
                   'main/auth.html',
@@ -73,7 +72,7 @@ def portfolio(request):
             search_words = request.GET['search'].lower().split()
             for picture in pictures:
                 for search_word in search_words:
-                    if picture.name.lower().find(search_word) != -1:
+                    if picture.picture.name.lower().find(search_word) != -1:
                         pictures_id.append(picture.id)
             pictures = PortfolioPicture.objects.filter(id__in=pictures_id)
     context = {'title': 'Портфолио',
@@ -94,7 +93,7 @@ def shop(request):
             search_words = request.GET['search'].lower().split()
             for picture in pictures:
                 for search_word in search_words:
-                    if picture.name.lower().find(search_word) != -1:
+                    if picture.picture.name.lower().find(search_word) != -1:
                         pictures_id.append(picture.id)
             pictures = ShopPicture.objects.filter(id__in=pictures_id)
 
